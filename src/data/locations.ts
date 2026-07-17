@@ -114,7 +114,7 @@ const locationDetails: LocationDetails[] = [
 		image: "/images/locations/Fjellgard.png",
 		population: "1 000 000",
 		description:
-			"Deep within the coldest reaches of the continent, nestled between the tallest mountains of Echoes, stands a city built to endure the endless frost. At its heart burns a colossal central furnace that protects its population from the deadly cold. Life here is quiet and unhurried, with most inhabitants relying on hunting, fishing, and coal mining to survive.",
+			"Deep within the coldest reaches of the continent, nestled between the tallest mountains of Echoes, stands a city built to endure the endless frost. At its heart burns a colossal central furnace that protects its population from the deadly cold. Life here is quiet and unhurried, with most inhabitants relying on hunting, fishing, and coal extraction to survive.",
 	},
 	{
 		name: "Drakonia",
