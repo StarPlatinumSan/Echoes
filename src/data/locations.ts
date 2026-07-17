@@ -199,7 +199,7 @@ const locationDetails: LocationDetails[] = [
 		population: "4 000 000",
 		link: { label: "Coming soon" },
 		description:
-			"Located within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be revealed through an upcoming tale, or an interactive film ...",
+			"Located within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be told through an upcoming tale, or an interactive film ...",
 	},
 ];
 
