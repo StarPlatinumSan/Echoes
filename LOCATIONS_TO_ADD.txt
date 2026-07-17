@@ -1,0 +1,209 @@
+THE VAULT OF ECHOES - LOCATIONS TO ADD
+
+HOW TO USE THIS FILE
+
+1. Mark each desired location on your map screenshot with a number.
+2. Fill in the matching numbered section below.
+3. For Image, write the image filename or attach the image when you send this file.
+   Location images are stored in public/images/locations.
+4. Population and Link are optional. Leave either line blank when it is not needed.
+5. Link may point to Steam, YouTube, a website, or another external page.
+6. Copy and paste another blank section if you need more locations.
+
+
+==============================
+LOCATION 1
+==============================
+
+Image: Neovia.jpg
+Name: Neovia
+Population: 11 000 000
+Description: Neovia is the northernmost city on the continent of Echoes. Renowned for its radiant neon skyline and towering neo-architecture, the city stands at the forefront of technological innovation. Its technocratic government and progress-driven economy have transformed Neovia into a powerful supernation and one of the continent’s wealthiest and most prosperous societies.
+Link:
+
+
+==============================
+LOCATION 2
+==============================
+
+Image:
+Name: My Portfolio
+Population: 1
+Description: Click the link below to access my Portfolio website.
+Link: https://portfolio-star.up.railway.app/
+
+
+==============================
+LOCATION 3
+==============================
+
+Image: Europa.png
+Name: Europa
+Population: 17 000 000
+Description: Europa, the Timeless City, is home to the continent’s foremost University of Chronurgy, where the mysteries of time are studied, mastered, and reshaped. Widely regarded as the birthplace of the Steampunk Era in Echoes, this supernation continues to thrive through its command of clockwork technology and temporal science. Though only the fourth most populous nation on the continent, Europa remains one of its most dynamic and influential, an ever-evolving metropolis where the past, present, and future converge.
+Link:
+
+
+==============================
+LOCATION 4
+==============================
+
+Image: Edmonton.png
+Name: Edmonton
+Population:
+Description: Echoes of Freedom is a soon-to-be published D&D 5e one-shot set in Edmonton, a mysterious city hidden within the Sealed Continent. Once home to one of the world’s foremost anomaly research laboratories, Edmonton severed all contact with the outside world after harnessing a Thaumiel-class anomaly capable of shielding the city from the Rapture.
+Link: COMING SOON.
+
+
+==============================
+LOCATION 5
+==============================
+
+Image: Copperbraum.jpg
+Name: Copperbraum
+Population: 2 500 000
+Description: the city of dwarves and gnomes, is also known as the City of Copper. Built across rugged hills and sustained by a thriving mining economy, its streets glow with molten metal and roaring furnaces. Despite the surrounding climate, the constant use of lava and industrial forges makes Copperbraum one of the hottest cities on the continent with an average temperature of 44 degrees during the day and 35 at night.
+Link:
+
+
+==============================
+LOCATION 6
+==============================
+
+Image: Fjellgard.png
+Name: Fjellgard
+Population: 1 000 000
+Description: Deep within the coldest reaches of the continent, nestled between the tallest mountains of Echoes, stands a city built to endure the endless frost. At its heart burns a colossal central furnace that protects its population from the deadly cold. Life here is quiet and unhurried, with most inhabitants relying on hunting, fishing, and coal mining to survive.
+Link:
+
+
+==============================
+LOCATION 7
+==============================
+
+Image: Drakonia.png
+Name: Drakonia
+Population: 1 700 000
+Description: Scattered throughout the jungles of the Far East lies a peaceful Dragonborn nation whose capital, Drakonia, stands as its prosperous heart. Welcoming Dragonborns of every lineage, the city is a haven where they can coexist, preserve their traditions, and progress together.
+Link:
+
+
+==============================
+LOCATION 8
+==============================
+
+Image: Ironhaven.jpg
+Name: Ironhaven
+Population: 6 000 000
+Description: The City of Iron lives up to its name. A seemingly flawless supernation, Ironhaven stands as one of the few civilizations to have achieved something resembling a true utopia, or at least, that is the image it presents to the outside world.
+Link:
+
+
+==============================
+LOCATION 9
+==============================
+
+Image: Republic.jpg
+Name: The Republic
+Population: 23 000 000
+Description: The Republic is the second-most populous supernation in the world and a nation unlike any other. Behind its colossal walls lies a sprawling dark-steampunk city-state, completely isolated from the outside world. Few people still know what truly happens within its borders; all that is known is that the Republic has descended into dystopia, leaving outsiders with little desire to obtain the right of entry.
+Link:
+
+
+==============================
+LOCATION 10
+==============================
+
+Image: Anchorage.png
+Name: Anchorage
+Population: 9 000 000
+Description: With nearly nine million inhabitants, Anchorage is an imposing industrial metropolis defined by its monumental architecture and strict discipline. As the sixth-largest city on the continent, it stands along the coast of the Echovian Ocean—the final citadel before the dark horizon of the Sealed Continent. Governed by an authoritarian, centre-right technocratic autocracy, the city is administered by the engineers and strategists of the Steam Order. Its skyline is dominated by colossal steel-and-steam bridges that cross the Stendhal River, linking its districts and spanning vast industrial chasms. There seems to be a two-shot for Game Masters soon coming out telling more about its story.
+Link: COMING SOON.
+
+
+==============================
+LOCATION 11
+==============================
+
+Image: Ashfenbourg.jpg
+Name: Ashfenbourg
+Population: 5 000 000
+Description: Situated closer to the continental capital than any other city, Ashfenbourg is a prosperous Elven nation renowned for its explorers, diplomats, and mastery of negotiation. Many of the continent’s most respected judges, lawmakers, and legal scholars emerge from its prestigious institutions. Yet beneath its elegance and affluence, the cost of living continues to soar, gradually transforming Ashfenbourg into a city accessible only to its wealthiest citizens.
+Link:
+
+
+==============================
+LOCATION 12
+==============================
+
+Image: Kyoran.png
+Name: Kyoran
+Population: 27 000 000
+Description: Kyoran, the capital-nation of Echoes, is the largest city in the world, a boundless metropolis where nearly anything can be found and every ambition pursued. Its immense density, Asian-inspired culture, and relentless dynamism make it a place many dream of calling home. Opportunity flows through every crowded street and towering district, but amid its ceaseless movement, there is one luxury Kyoran cannot offer: peace.
+Link:
+
+
+==============================
+LOCATION 13
+==============================
+
+Image: Vapoya.png
+Name: Vapoya
+Population: 21 000 000
+Description: Vapoya owes its rise as a supernation to its prestigious universities and brilliant researchers, whose breakthroughs in the manipulation of gases and vapor have reshaped both industry and everyday life. Moreover renowned for its prestigious Academy of Medicine, whose discoveries have revolutionized the treatment of illness and injury throughout Echoes. More recently, its researchers have begun harnessing Anomite as a therapeutic material, showing promising potential in the treatment of certain mental disorders. This emerging field, however, remains experimental and its long-term effects are still largely unknown. Often regarded as Kyoran's younger cousin, the city shares its relentless dynamism and layered history. Beneath its ever-shifting veil of mist, Vapoya continually reinvents itself and never ceases to amaze those who call it home.
+Link:
+
+
+==============================
+LOCATION 14
+==============================
+
+Image:
+Name: Anomite
+Population: 0
+Description: This place seems to hold a higher concentration of Anomite, the mineral that seems to be useful to produce energy, exploit the magic veil of reality and seems to be giving humans extraordinary powers at the expense of the madness of their mental health. Some theories suggest this mineral has a correlation with the existence of Anomalies.
+Link:
+
+
+==============================
+LOCATION 15
+==============================
+
+Image: Babylona.jpg
+Name: Babylone
+Population: 700 000
+Description: This desert metropolis stands at the crossroads of the continent’s greatest trade routes and is home to the largest library in the known world. Yet its bustling markets, sun-scorched towers, and vast archives reveal only a fraction of its true scale. Beneath the sands lies an immense hidden city, proof that everything visible on the surface is merely the tip of the iceberg.
+Link:
+
+
+==============================
+LOCATION 16
+==============================
+
+Image: Alexandria.jpg
+Name: Alexandria
+Population: 100 000
+Description: This quiet medieval town offers everything needed for a peaceful life untouched by the relentless march of modern industry. Within its ancient walls, artisans, farmers, and merchants preserve the traditions of a simpler age, making it the perfect refuge for anyone seeking the calm and charm of the old world.
+Link:
+
+
+==============================
+LOCATION 17
+==============================
+
+Image: Montpellier.png
+Name: Montpellier
+Population: 300 000
+Description: This small coastal city is renowned for its gentle pace of life, where mornings begin with coffee at the local café and no one ever seems to be in a hurry. Beyond its quiet streets lie dazzling, crystal-blue seas, so radiant they almost hurt to behold. Here, simplicity is not a limitation, but a way of life.
+Link:
+
+
+==============================
+LOCATION 18
+==============================
+
+Image: Mask.png
+Name: Montreal
+Population: 4 000 000
+Description: Located deep within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be revealed through an upcoming tale, or an interactive film ...
+Link: COMING SOON

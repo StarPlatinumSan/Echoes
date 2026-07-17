@@ -47,12 +47,18 @@ src/
   hooks/useReducedMotion.ts
   lib/ambientAudio.ts
 public/
-  assets/
+  favicon.png
+  images/
+    locations/
+    stories/
   map/world-map.dzi
   map/world-map_files/
+source-assets/          # local originals; ignored by Git and deployment
+  map/
+  reference/
 scripts/
   generate_dzi.py
-  create_crops.py
+  create_zone_crops.py
 worker/
   sites-worker.js
 ```
@@ -61,7 +67,7 @@ worker/
 
 The application never renders the source map as a normal `<img>`. OpenSeadragon reads the descriptor at `public/map/world-map.dzi` and requests only the JPEG tiles needed for the current view.
 
-The repository includes an original, smaller demonstration map and a working DZI pyramid. Replace it with the production 16K source before publishing final content.
+The installed DZI pyramid was generated from the 16384×12288 production source. Original map and working artwork files live under the ignored `source-assets/` directory so they are never copied into a deployment.
 
 Expected placement:
 
@@ -81,7 +87,7 @@ Install Pillow, then run the provided converter from the project root:
 
 ```bash
 python -m pip install Pillow
-python scripts/generate_dzi.py path/to/your-16k-map.png public/map/world-map
+python scripts/generate_dzi.py "source-assets/map/Echoes 16K.jpg" public/map/world-map
 ```
 
 The output stem must be `public/map/world-map` unless `VITE_MAP_TILE_SOURCE` points to a different descriptor. The script writes 256px JPEG tiles with a one-pixel overlap.
@@ -116,7 +122,7 @@ Edit `src/data/locations.ts`. Coordinates are normalized, so `x: 0` / `y: 0` is 
   category: "Uncatalogued",
   x: 0.500000,
   y: 0.500000,
-  image: "/assets/new-location.webp",
+  image: "/images/locations/new-location.webp",
   summary: "A concise archive summary.",
   sections: [
     { title: "Field note", body: "Optional long-form lore." }
@@ -127,7 +133,7 @@ Edit `src/data/locations.ts`. Coordinates are normalized, so `x: 0` / `y: 0` is 
       title: "Related Story",
       format: "Short story",
       synopsis: "A concise synopsis.",
-      image: "/assets/related-story.webp",
+      image: "/images/stories/related-story.webp",
       url: "https://example.com/story",
       buttonLabel: "Read the story"
     }
@@ -151,13 +157,19 @@ The tool is guarded by both `import.meta.env.DEV` and the environment flag, so i
 
 ## Optional ambient audio
 
-No audio is bundled or autoplayed on page load. To opt in, host an audio file and set:
+Create an `audio` folder inside `public`, then add your music at:
 
-```dotenv
-VITE_AMBIENT_AUDIO_URL=/audio/vault-ambience.mp3
+```text
+public/audio/002_Synthwave_15k.mp3
 ```
 
-The audio controller is invoked only from the visitor's Enter button gesture. Leave the value empty for a silent archive.
+That path works automatically. To use a different filename or a hosted audio URL, set:
+
+```dotenv
+VITE_AMBIENT_AUDIO_URL=/audio/002_Synthwave_15k.mp3
+```
+
+The audio controller is invoked only from the visitor's Enter button gesture. Visitors can mute, unmute, and adjust the volume with the compact control in the top-right corner.
 
 ## Interaction and accessibility
 

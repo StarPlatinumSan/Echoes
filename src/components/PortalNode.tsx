@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Location } from "../data/locations";
 
 interface PortalNodeProps {
@@ -9,14 +8,10 @@ interface PortalNodeProps {
 }
 
 export function PortalNode({ location, active, disabled, onOpen }: PortalNodeProps) {
-  const [inspected, setInspected] = useState(false);
-
   const handleActivate = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const coarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
-    if (coarsePointer && !inspected) {
-      setInspected(true);
-      return;
-    }
+    // Pointer activation is handled by OpenSeadragon's MouseTracker. Native
+    // detail === 0 clicks are retained for keyboard and assistive technology.
+    if (event.detail !== 0) return;
     onOpen(location, event.currentTarget);
   };
 
@@ -24,18 +19,17 @@ export function PortalNode({ location, active, disabled, onOpen }: PortalNodePro
     <button
       type="button"
       disabled={disabled}
-      className={`portal ${inspected ? "portal--inspected" : ""} ${active ? "portal--active" : ""}`}
-      aria-label={`${location.name}. ${inspected ? "Tap again to open." : "Inspect location."}`}
+      className={`portal ${active ? "portal--active" : ""}`}
+      aria-label={`Open ${location.name}`}
       aria-pressed={active}
       onClick={handleActivate}
-      onBlur={() => setInspected(false)}
     >
       <span className="portal__distortion" aria-hidden="true" />
       <span className="portal__ring" aria-hidden="true" />
       <span className="portal__core" aria-hidden="true" />
       <span className="portal__label">
         <span>{location.name}</span>
-        <small>{inspected ? "Tap again to open" : location.category}</small>
+        <small>{location.category}</small>
       </span>
     </button>
   );

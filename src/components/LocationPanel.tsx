@@ -1,18 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Location } from "../data/locations";
 import { StoryCard } from "./StoryCard";
 
 interface LocationPanelProps {
   location: Location;
+  closing: boolean;
   onClose: () => void;
 }
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-export function LocationPanel({ location, onClose }: LocationPanelProps) {
+export function LocationPanel({ location, closing, onClose }: LocationPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const image = location.image?.trim();
+  const fallbackImage = location.fallbackImage?.trim();
+  const [imageSource, setImageSource] = useState(image);
+  const population = location.population?.trim();
+  const description = location.description?.trim();
+  const linkUrl = location.link?.url?.trim();
+  const linkLabel = location.link?.label?.trim() || "Open link";
+  const hasLongTitleWord = location.name
+    .split(/\s+/)
+    .some((word) => word.length >= 10);
+
+  useEffect(() => setImageSource(image), [image, location.id]);
 
   useEffect(() => {
     closeRef.current?.focus();
@@ -46,14 +59,16 @@ export function LocationPanel({ location, onClose }: LocationPanelProps) {
   }, [onClose, location.id]);
 
   const titleId = `location-${location.id}-title`;
+  const descriptionId = `location-${location.id}-description`;
 
   return (
     <aside
       ref={panelRef}
-      className="location-panel"
+      className={`location-panel ${closing ? "location-panel--closing" : ""}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
+      aria-describedby={description ? descriptionId : undefined}
     >
       <div className="location-panel__rail" aria-hidden="true">
         <span>{String(Math.round(location.x * 100)).padStart(3, "0")}</span>
@@ -68,23 +83,69 @@ export function LocationPanel({ location, onClose }: LocationPanelProps) {
           </button>
         </header>
 
-        <div className="location-panel__hero">
-          <img
-            src={location.image}
-            alt={`Archival view of ${location.name}`}
-            loading="lazy"
-            decoding="async"
-            sizes="(max-width: 720px) 100vw, 460px"
-          />
-          <span className="location-panel__image-index" aria-hidden="true">
-            VE / {location.id.slice(0, 2).toUpperCase()}
-          </span>
-        </div>
+        {imageSource && (
+          <div className="location-panel__hero">
+            <img
+              src={imageSource}
+              alt={`Archival view of ${location.name}`}
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 720px) 100vw, 460px"
+              onError={() => {
+                if (fallbackImage && imageSource !== fallbackImage) {
+                  setImageSource(fallbackImage);
+                } else {
+                  setImageSource(undefined);
+                }
+              }}
+            />
+            <span className="location-panel__image-index" aria-hidden="true">
+              VE / {location.id.slice(0, 2).toUpperCase()}
+            </span>
+          </div>
+        )}
 
         <div className="location-panel__content">
           <p className="location-panel__category">{location.category}</p>
-          <h2 id={titleId}>{location.name}</h2>
-          <p className="location-panel__summary">{location.summary}</p>
+          <h2
+            id={titleId}
+            className={hasLongTitleWord ? "location-panel__title--long" : undefined}
+          >
+            {location.name}
+          </h2>
+          {population && (
+            <p className="location-panel__population">
+              <span>Population</span>
+              <strong>{population}</strong>
+            </p>
+          )}
+          {description && (
+            <p id={descriptionId} className="location-panel__summary">
+              {description}
+            </p>
+          )}
+
+          {location.link &&
+            (linkUrl ? (
+              <a
+                className="location-panel__external-link"
+                href={linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {linkLabel}
+                <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <button
+                className="location-panel__external-link"
+                type="button"
+                disabled
+              >
+                {linkLabel}
+                <span aria-hidden="true">—</span>
+              </button>
+            ))}
 
           {location.sections?.map((section, index) => (
             <section className="lore-section" key={section.title}>

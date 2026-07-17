@@ -12,6 +12,9 @@ from pathlib import Path
 
 from PIL import Image
 
+# This project intentionally processes trusted, very large cartographic sources.
+Image.MAX_IMAGE_PIXELS = None
+
 
 def build_pyramid(source: Path, output_stem: Path, tile_size: int, overlap: int) -> None:
     image = Image.open(source).convert("RGB")
@@ -23,13 +26,20 @@ def build_pyramid(source: Path, output_stem: Path, tile_size: int, overlap: int)
         scale = 2 ** (max_level - level)
         level_width = max(1, math.ceil(width / scale))
         level_height = max(1, math.ceil(height / scale))
-        level_image = image.resize(
-            (level_width, level_height), Image.Resampling.LANCZOS
+        level_image = (
+            image
+            if scale == 1
+            else image.resize((level_width, level_height), Image.Resampling.LANCZOS)
         )
         level_dir = tiles_root / str(level)
         level_dir.mkdir(parents=True, exist_ok=True)
         columns = math.ceil(level_width / tile_size)
         rows = math.ceil(level_height / tile_size)
+        print(
+            f"Level {level}/{max_level}: {level_width}x{level_height}, "
+            f"{columns * rows} tiles",
+            flush=True,
+        )
 
         for row in range(rows):
             for column in range(columns):

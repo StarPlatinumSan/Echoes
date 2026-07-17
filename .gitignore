@@ -30,3 +30,6 @@ yarn-error.log*
 
 # typescript
 /dist/
+
+# Original cartography and working artwork; retain locally but never deploy it.
+/source-assets/
