@@ -23,6 +23,7 @@ export default function App() {
 	const [audioVolume, setAudioVolume] = useState(DEFAULT_AMBIENT_VOLUME);
 	const originRef = useRef<HTMLButtonElement | null>(null);
 	const closeTimerRef = useRef<number | null>(null);
+	const backdropPressStartedAtRef = useRef<number | null>(null);
 
 	useEffect(
 		() => () => {
@@ -96,6 +97,26 @@ export default function App() {
 		);
 	}, [finishClosingLocation, reducedMotion]);
 
+	const closeFromBackdrop = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>) => {
+			const pressStartedAt = backdropPressStartedAtRef.current;
+			backdropPressStartedAtRef.current = null;
+
+			// A touch release can create a click after this backdrop mounts even
+			// though the press began on a portal. Only accept pointer clicks that
+			// actually began on the backdrop; detail === 0 retains keyboard use.
+			if (
+				event.detail !== 0 &&
+				(pressStartedAt === null || event.timeStamp - pressStartedAt > 1000)
+			) {
+				return;
+			}
+
+			closeLocation();
+		},
+		[closeLocation],
+	);
+
 	return (
 		<main className={`app ${entered ? "app--entered" : ""}`}>
 			<div className="map-stage" aria-hidden={selectedLocation ? "true" : undefined}>
@@ -147,7 +168,13 @@ export default function App() {
 						className={`panel-backdrop ${panelClosing ? "panel-backdrop--closing" : ""}`}
 						type="button"
 						aria-label="Close location details"
-						onClick={closeLocation}
+						onPointerDown={(event) => {
+							backdropPressStartedAtRef.current = event.timeStamp;
+						}}
+						onPointerCancel={() => {
+							backdropPressStartedAtRef.current = null;
+						}}
+						onClick={closeFromBackdrop}
 					/>
 					<LocationPanel
 						location={selectedLocation}
