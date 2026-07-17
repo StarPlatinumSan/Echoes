@@ -1255,7 +1255,7 @@
 
   .location-panel {
     position: fixed;
-    z-index: 50;
+    z-index: 70;
     top: 0;
     right: 0;
     bottom: 0;
