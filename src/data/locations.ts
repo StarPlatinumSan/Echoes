@@ -117,11 +117,11 @@ const locationDetails: LocationDetails[] = [
 			"Deep within the coldest reaches of the continent, nestled between the tallest mountains of Echoes, stands a city built to endure the endless frost. At its heart burns a colossal central furnace that protects its population from the deadly cold. Life here is quiet and unhurried, with most inhabitants relying on hunting, fishing, and coal extraction to live.",
 	},
 	{
-		name: "Drakonia",
+		name: "Drakya",
 		image: "/images/locations/Drakonia.png",
-		population: "1 700 000",
+		population: "2 700 000",
 		description:
-			"Scattered throughout the jungles of the Far East lies a peaceful Dragonborn nation whose capital, Drakonia, stands as its prosperous heart. Welcoming Dragonborns of every lineage, the city is a haven where they can coexist, preserve their traditions, and progress together.",
+			"Scattered throughout the jungles of the Far East lies a peaceful Dragonborn nation whose capital, Drakya, stands as its prosperous heart. Welcoming Dragonborns of every lineage, the city is a haven where they can coexist, preserve their traditions, and progress together.",
 	},
 	{
 		name: "Ironhaven",
