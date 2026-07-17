@@ -1737,8 +1737,23 @@
     }
 
     .audio-controls {
-      top: 66px;
+      top: 16px;
       right: 16px;
+      grid-template-columns: 30px;
+      grid-template-rows: repeat(3, 30px) 26px;
+      width: 32px;
+      height: 118px;
+    }
+
+    .audio-controls button {
+      border-right: 0;
+      border-bottom: 1px solid rgba(213, 190, 150, 0.18);
+    }
+
+    .audio-controls__level {
+      width: 30px;
+      min-width: 30px;
+      height: 26px;
     }
 
     .map-instructions {
