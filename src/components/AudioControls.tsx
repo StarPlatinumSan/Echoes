@@ -1,6 +1,9 @@
+import type { InterfaceCopy } from "../data/i18n";
+
 interface AudioControlsProps {
   muted: boolean;
   volume: number;
+  copy: InterfaceCopy["audio"];
   onToggleMute: () => void;
   onDecreaseVolume: () => void;
   onIncreaseVolume: () => void;
@@ -9,6 +12,7 @@ interface AudioControlsProps {
 export function AudioControls({
   muted,
   volume,
+  copy,
   onToggleMute,
   onDecreaseVolume,
   onIncreaseVolume,
@@ -16,13 +20,13 @@ export function AudioControls({
   const percentage = Math.round(volume * 100);
 
   return (
-    <nav className="audio-controls" aria-label="Ambient music controls">
+    <nav className="audio-controls" aria-label={copy.controls}>
       <button
         type="button"
         onClick={onDecreaseVolume}
         disabled={volume <= 0}
-        aria-label="Decrease music volume"
-        title="Decrease volume"
+        aria-label={copy.decrease}
+        title={copy.decreaseTitle}
       >
         −
       </button>
@@ -30,9 +34,9 @@ export function AudioControls({
         className={`audio-controls__toggle ${muted ? "audio-controls__toggle--muted" : ""}`}
         type="button"
         onClick={onToggleMute}
-        aria-label={muted ? "Unmute ambient music" : "Mute ambient music"}
+        aria-label={muted ? copy.unmute : copy.mute}
         aria-pressed={muted}
-        title={muted ? "Unmute music" : "Mute music"}
+        title={muted ? copy.unmuteTitle : copy.muteTitle}
       >
         <span aria-hidden="true">♪</span>
       </button>
@@ -40,15 +44,17 @@ export function AudioControls({
         type="button"
         onClick={onIncreaseVolume}
         disabled={volume >= 1}
-        aria-label="Increase music volume"
-        title="Increase volume"
+        aria-label={copy.increase}
+        title={copy.increaseTitle}
       >
         +
       </button>
-      <output className="audio-controls__level" aria-label={`Music volume ${percentage} percent`}>
+      <output
+        className="audio-controls__level"
+        aria-label={`${copy.volume} ${percentage}%`}
+      >
         {percentage}
       </output>
     </nav>
   );
 }
-

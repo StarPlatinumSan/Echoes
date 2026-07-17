@@ -1,17 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import type { InterfaceCopy } from "../data/i18n";
 import type { Location } from "../data/locations";
 import { StoryCard } from "./StoryCard";
 
 interface LocationPanelProps {
   location: Location;
   closing: boolean;
+  copy: InterfaceCopy["location"];
   onClose: () => void;
 }
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-export function LocationPanel({ location, closing, onClose }: LocationPanelProps) {
+export function LocationPanel({
+  location,
+  closing,
+  copy,
+  onClose,
+}: LocationPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const image = location.image?.trim();
@@ -20,7 +27,7 @@ export function LocationPanel({ location, closing, onClose }: LocationPanelProps
   const population = location.population?.trim();
   const description = location.description?.trim();
   const linkUrl = location.link?.url?.trim();
-  const linkLabel = location.link?.label?.trim() || "Open link";
+  const linkLabel = location.link?.label?.trim() || copy.openLink;
   const hasLongTitleWord = location.name
     .split(/\s+/)
     .some((word) => word.length >= 10);
@@ -76,9 +83,14 @@ export function LocationPanel({ location, closing, onClose }: LocationPanelProps
       </div>
       <div className="location-panel__scroll">
         <header className="location-panel__header">
-          <p className="eyebrow">Archive location</p>
-          <button ref={closeRef} type="button" onClick={onClose} aria-label="Close location details">
-            <span>Close</span>
+          <p className="eyebrow">{copy.archiveLocation}</p>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label={copy.closeDetails}
+          >
+            <span>{copy.close}</span>
             <span aria-hidden="true">×</span>
           </button>
         </header>
@@ -87,7 +99,7 @@ export function LocationPanel({ location, closing, onClose }: LocationPanelProps
           <div className="location-panel__hero">
             <img
               src={imageSource}
-              alt={`Archival view of ${location.name}`}
+              alt={`${copy.archivalView} ${location.name}`}
               loading="lazy"
               decoding="async"
               sizes="(max-width: 720px) 100vw, 460px"
@@ -115,7 +127,7 @@ export function LocationPanel({ location, closing, onClose }: LocationPanelProps
           </h2>
           {population && (
             <p className="location-panel__population">
-              <span>Population</span>
+              <span>{copy.population}</span>
               <strong>{population}</strong>
             </p>
           )}
@@ -162,10 +174,10 @@ export function LocationPanel({ location, closing, onClose }: LocationPanelProps
           {location.stories && location.stories.length > 0 && (
             <section className="related-stories" aria-labelledby={`stories-${location.id}`}>
               <div className="related-stories__heading">
-                <p className="eyebrow">Related transmissions</p>
+                <p className="eyebrow">{copy.relatedTransmissions}</p>
                 <span>{String(location.stories.length).padStart(2, "0")}</span>
               </div>
-              <h3 id={`stories-${location.id}`}>Stories from this place</h3>
+              <h3 id={`stories-${location.id}`}>{copy.storiesFromPlace}</h3>
               <div className="related-stories__grid">
                 {location.stories.map((story) => (
                   <StoryCard key={story.id} story={story} />

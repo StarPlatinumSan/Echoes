@@ -3,7 +3,12 @@ import { AudioControls } from "./components/AudioControls";
 import { LocationPanel } from "./components/LocationPanel";
 import { VaultEntrance } from "./components/VaultEntrance";
 import { WorldMap } from "./components/WorldMap";
+import {
+	interfaceCopy,
+	type Language,
+} from "./data/i18n";
 import { locations, type Location } from "./data/locations";
+import { locationsFr } from "./data/locations.fr";
 import { useReducedMotion } from "./hooks/useReducedMotion";
 import { ambientAudio, DEFAULT_AMBIENT_VOLUME } from "./lib/ambientAudio";
 
@@ -14,6 +19,7 @@ const AUDIO_VOLUME_STEP = 0.1;
 
 export default function App() {
 	const reducedMotion = useReducedMotion();
+	const [language, setLanguage] = useState<Language>("en");
 	const [entered, setEntered] = useState(false);
 	const [entranceVisible, setEntranceVisible] = useState(true);
 	const [entranceLeaving, setEntranceLeaving] = useState(false);
@@ -24,6 +30,8 @@ export default function App() {
 	const originRef = useRef<HTMLButtonElement | null>(null);
 	const closeTimerRef = useRef<number | null>(null);
 	const backdropPressStartedAtRef = useRef<number | null>(null);
+	const copy = interfaceCopy[language];
+	const activeLocations = language === "fr" ? locationsFr : locations;
 
 	useEffect(
 		() => () => {
@@ -34,6 +42,23 @@ export default function App() {
 		},
 		[],
 	);
+
+	useEffect(() => {
+		document.documentElement.lang = language;
+		document.title = interfaceCopy[language].app.brandTitle;
+	}, [language]);
+
+	const toggleLanguage = () => {
+		const nextLanguage: Language = language === "en" ? "fr" : "en";
+		const nextLocations = nextLanguage === "fr" ? locationsFr : locations;
+
+		setLanguage(nextLanguage);
+		setSelectedLocation((current) =>
+			current
+				? nextLocations.find((location) => location.id === current.id) ?? null
+				: null,
+		);
+	};
 
 	const enterVault = () => {
 		setEntranceLeaving(true);
@@ -120,10 +145,26 @@ export default function App() {
 	return (
 		<main className={`app ${entered ? "app--entered" : ""}`}>
 			<div className="map-stage" aria-hidden={selectedLocation ? "true" : undefined}>
-				<WorldMap interactive={entered && !selectedLocation} selectedLocation={selectedLocation} onOpenLocation={openLocation} />
+				<WorldMap
+					interactive={entered && !selectedLocation}
+					locations={activeLocations}
+					selectedLocation={selectedLocation}
+					copy={copy}
+					onOpenLocation={openLocation}
+				/>
 			</div>
 
 			<div className="grain" aria-hidden="true" />
+
+			<button
+				className="language-toggle"
+				type="button"
+				onClick={toggleLanguage}
+				aria-label={copy.app.switchLanguage}
+				title={copy.app.switchLanguage}
+			>
+				{language === "en" ? "FR" : "EN"}
+			</button>
 
 			{entered && (
 				<header className="archive-header">
@@ -132,13 +173,16 @@ export default function App() {
 							VE
 						</span>
 						<div>
-							<strong>The Vault of Echoes</strong>
-							<span>My World, my Universe.</span>
+							<strong>{copy.app.brandTitle}</strong>
+							<span>{copy.app.brandSubtitle}</span>
 						</div>
 					</div>
-					<div className="archive-header__count" aria-label={`${locations.length} indexed locations`}>
-						<span>{String(locations.length).padStart(2, "0")}</span>
-						<small>sites indexed</small>
+					<div
+						className="archive-header__count"
+						aria-label={`${activeLocations.length} ${copy.app.indexedLocations}`}
+					>
+						<span>{String(activeLocations.length).padStart(2, "0")}</span>
+						<small>{copy.app.sitesIndexed}</small>
 					</div>
 				</header>
 			)}
@@ -147,6 +191,7 @@ export default function App() {
 				<AudioControls
 					muted={audioMuted}
 					volume={audioVolume}
+					copy={copy.audio}
 					onToggleMute={toggleAudioMuted}
 					onDecreaseVolume={() => changeAudioVolume(-AUDIO_VOLUME_STEP)}
 					onIncreaseVolume={() => changeAudioVolume(AUDIO_VOLUME_STEP)}
@@ -155,19 +200,25 @@ export default function App() {
 
 			{entered && (
 				<div className="map-instructions" aria-hidden="true">
-					<span>Drag to traverse</span>
-					<span>Scroll to examine</span>
+					<span>{copy.app.dragToTraverse}</span>
+					<span>{copy.app.scrollToExamine}</span>
 				</div>
 			)}
 
-			{entranceVisible && <VaultEntrance onEnter={enterVault} leaving={entranceLeaving} />}
+			{entranceVisible && (
+				<VaultEntrance
+					onEnter={enterVault}
+					leaving={entranceLeaving}
+					copy={copy.vault}
+				/>
+			)}
 
 			{selectedLocation && (
 				<>
 					<button
 						className={`panel-backdrop ${panelClosing ? "panel-backdrop--closing" : ""}`}
 						type="button"
-						aria-label="Close location details"
+						aria-label={copy.app.closeLocationDetails}
 						onPointerDown={(event) => {
 							backdropPressStartedAtRef.current = event.timeStamp;
 						}}
@@ -179,6 +230,7 @@ export default function App() {
 					<LocationPanel
 						location={selectedLocation}
 						closing={panelClosing}
+						copy={copy.location}
 						onClose={closeLocation}
 					/>
 				</>

@@ -1,8 +1,11 @@
+import type { InterfaceCopy } from "../data/i18n";
+
 interface MapControlsProps {
   onZoomIn: () => void;
   onZoomOut: () => void;
   onReset: () => void;
   disabled: boolean;
+  copy: InterfaceCopy["mapControls"];
 }
 
 export function MapControls({
@@ -10,13 +13,14 @@ export function MapControls({
   onZoomOut,
   onReset,
   disabled,
+  copy,
 }: MapControlsProps) {
   return (
-    <nav className="map-controls" aria-label="Map controls">
-      <button type="button" onClick={onZoomIn} disabled={disabled} aria-label="Zoom in">
+    <nav className="map-controls" aria-label={copy.controls}>
+      <button type="button" onClick={onZoomIn} disabled={disabled} aria-label={copy.zoomIn}>
         +
       </button>
-      <button type="button" onClick={onZoomOut} disabled={disabled} aria-label="Zoom out">
+      <button type="button" onClick={onZoomOut} disabled={disabled} aria-label={copy.zoomOut}>
         −
       </button>
       <button
@@ -24,7 +28,7 @@ export function MapControls({
         type="button"
         onClick={onReset}
         disabled={disabled}
-        aria-label="Reset map to world view"
+        aria-label={copy.reset}
       >
         ↺
       </button>

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import OpenSeadragon from "openseadragon";
-import { locations, type Location } from "../data/locations";
+import type { InterfaceCopy } from "../data/i18n";
+import type { Location } from "../data/locations";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { calculateMapDistanceKm, type MapPoint } from "../lib/mapDistance";
 import { DistanceTool } from "./DistanceTool";
@@ -11,7 +12,9 @@ import { PortalNode } from "./PortalNode";
 
 interface WorldMapProps {
   interactive: boolean;
+  locations: Location[];
   selectedLocation: Location | null;
+  copy: InterfaceCopy;
   onOpenLocation: (location: Location, origin: HTMLButtonElement) => void;
 }
 
@@ -39,7 +42,9 @@ const placementEnabled =
 
 export function WorldMap({
   interactive,
+  locations,
   selectedLocation,
+  copy,
   onOpenLocation,
 }: WorldMapProps) {
   const viewerElementRef = useRef<HTMLDivElement>(null);
@@ -53,8 +58,8 @@ export function WorldMap({
   const measurementOverlayUpdaterRef = useRef<(() => void) | null>(null);
   const reducedMotion = useReducedMotion();
   const [ready, setReady] = useState(false);
-  const [fatalError, setFatalError] = useState<string | null>(null);
-  const [tileWarning, setTileWarning] = useState<string | null>(null);
+  const [fatalError, setFatalError] = useState(false);
+  const [tileWarning, setTileWarning] = useState(false);
   const [placementPoint, setPlacementPoint] = useState<PlacementPoint | null>(null);
   const [copied, setCopied] = useState<"coordinates" | "object" | null>(null);
   const [measurementActive, setMeasurementActive] = useState(false);
@@ -137,7 +142,7 @@ export function WorldMap({
 
       setPortalOverlays(nextPortalOverlays);
     },
-    [addMeasurementPoint],
+    [addMeasurementPoint, locations],
   );
 
   useEffect(() => {
@@ -247,7 +252,7 @@ export function WorldMap({
 
     viewer.addHandler("open", () => {
       if (disposed) return;
-      setFatalError(null);
+      setFatalError(false);
       setReady(true);
       mountPortalOverlays(viewer);
       updateViewportPresentation();
@@ -267,13 +272,11 @@ export function WorldMap({
 
     viewer.addHandler("open-failed", () => {
       setReady(false);
-      setFatalError(
-        "The map archive could not be opened. Check the DZI descriptor and tile folder.",
-      );
+      setFatalError(true);
     });
 
     viewer.addHandler("tile-load-failed", () => {
-      setTileWarning("One map tile was unavailable. Navigation remains active.");
+      setTileWarning(true);
     });
 
     viewer.addHandler("canvas-click", (event) => {
@@ -418,13 +421,13 @@ export function WorldMap({
     ? JSON.stringify(
         {
           id: "new-location",
-          name: "New Location",
-          category: "Uncatalogued",
+          name: copy.placement.newLocation,
+          category: copy.placement.uncatalogued,
           x: Number(placementPoint.x.toFixed(6)),
           y: Number(placementPoint.y.toFixed(6)),
           image: "/images/locations/new-location.webp",
-          population: "Population pending",
-          description: "Add a concise archival description.",
+          population: copy.placement.populationPending,
+          description: copy.placement.descriptionPlaceholder,
         },
         null,
         2,
@@ -445,7 +448,7 @@ export function WorldMap({
   return (
     <section
       className={`world-map ${interactive ? "world-map--interactive" : ""} ${measurementActive ? "world-map--measuring" : ""}`}
-      aria-label="World map"
+      aria-label={copy.map.worldMap}
     >
       <div className="vault-backdrop" aria-hidden="true">
         <span className="vault-backdrop__door" />
@@ -457,7 +460,7 @@ export function WorldMap({
         className="world-map__viewer"
         tabIndex={interactive ? 0 : -1}
         onKeyDown={handleKeyDown}
-        aria-label="Interactive map. Drag to pan, scroll or use plus and minus to zoom, arrow keys to move, and Home to reset."
+        aria-label={copy.map.interactiveMap}
       />
       <div className="map-zoom-vignette" aria-hidden="true" />
 
@@ -497,7 +500,7 @@ export function WorldMap({
                 rx="2"
               />
               <text x={measurementMidpoint.x} y={measurementMidpoint.y + 4} textAnchor="middle">
-                {Math.round(measuredDistanceKm).toLocaleString()} km
+                {Math.round(measuredDistanceKm).toLocaleString(copy.distance.locale)} km
               </text>
             </g>
           )}
@@ -510,6 +513,7 @@ export function WorldMap({
             location={location}
             active={selectedLocation?.id === location.id}
             disabled={!interactive}
+            copy={copy.portal}
             onOpen={(location, origin) => {
               if (measurementActive) {
                 addMeasurementPoint({ x: location.x, y: location.y });
@@ -526,24 +530,24 @@ export function WorldMap({
       {!ready && !fatalError && (
         <div className="map-loading" role="status" aria-live="polite">
           <span className="map-loading__dial" aria-hidden="true" />
-          <p>Opening the cartographic index</p>
+          <p>{copy.map.openingIndex}</p>
         </div>
       )}
 
       {fatalError && (
         <div className="map-error" role="alert">
-          <p className="eyebrow">Archive interruption</p>
-          <h2>Map unavailable</h2>
-          <p>{fatalError}</p>
+          <p className="eyebrow">{copy.map.archiveInterruption}</p>
+          <h2>{copy.map.mapUnavailable}</h2>
+          <p>{copy.map.mapOpenError}</p>
           <button type="button" onClick={() => viewerRef.current?.open(tileSource)}>
-            Retry map
+            {copy.map.retry}
           </button>
         </div>
       )}
 
       {tileWarning && interactive && (
-        <button className="tile-warning" type="button" onClick={() => setTileWarning(null)}>
-          {tileWarning} <span aria-hidden="true">×</span>
+        <button className="tile-warning" type="button" onClick={() => setTileWarning(false)}>
+          {copy.map.tileWarning} <span aria-hidden="true">×</span>
         </button>
       )}
 
@@ -552,6 +556,7 @@ export function WorldMap({
         onZoomOut={() => zoomBy(1 / 1.35)}
         onReset={reset}
         disabled={!interactive || !ready}
+        copy={copy.mapControls}
       />
 
       <DistanceTool
@@ -562,12 +567,14 @@ export function WorldMap({
         onOpen={openMeasurement}
         onClose={closeMeasurement}
         onReset={resetMeasurement}
+        copy={copy.distance}
       />
 
       {placementEnabled && interactive && (
         <PlacementTool
           point={placementPoint}
           copied={copied}
+          copy={copy.placement}
           onCopyCoordinates={() => void copyText(coordinateText, "coordinates")}
           onCopyObject={() => void copyText(starterObject, "object")}
         />

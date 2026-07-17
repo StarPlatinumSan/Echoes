@@ -752,6 +752,44 @@
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  .language-toggle {
+    position: fixed;
+    z-index: 60;
+    top: 24px;
+    right: 26px;
+    min-width: 42px;
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid rgba(207, 171, 118, 0.55);
+    background: rgba(9, 11, 11, 0.86);
+    color: var(--brass-bright);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .language-toggle:hover,
+  .language-toggle:focus-visible {
+    border-color: var(--brass-bright);
+    background: rgba(170, 136, 96, 0.2);
+    color: var(--ivory);
+  }
+
+  .app--entered .language-toggle {
+    top: 119px;
+    right: 26px;
+    width: 32px;
+    min-width: 32px;
+    padding: 0;
+  }
+
   .archive-header {
     position: fixed;
     z-index: 15;
@@ -1725,6 +1763,22 @@
 
     .archive-header {
       padding: 17px 16px;
+    }
+
+    .language-toggle {
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      min-width: 34px;
+      height: 32px;
+      padding: 0;
+    }
+
+    .app--entered .language-toggle {
+      top: 142px;
+      right: 16px;
+      width: 32px;
+      min-width: 32px;
     }
 
     .archive-header__brand div span,

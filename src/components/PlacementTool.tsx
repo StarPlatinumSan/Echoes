@@ -1,3 +1,5 @@
+import type { InterfaceCopy } from "../data/i18n";
+
 export interface PlacementPoint {
   x: number;
   y: number;
@@ -8,6 +10,7 @@ interface PlacementToolProps {
   onCopyCoordinates: () => void;
   onCopyObject: () => void;
   copied: "coordinates" | "object" | null;
+  copy: InterfaceCopy["placement"];
 }
 
 export function PlacementTool({
@@ -15,14 +18,15 @@ export function PlacementTool({
   onCopyCoordinates,
   onCopyObject,
   copied,
+  copy,
 }: PlacementToolProps) {
   return (
-    <aside className="placement-tool" aria-label="Development node placement tool">
+    <aside className="placement-tool" aria-label={copy.ariaLabel}>
       <div className="placement-tool__heading">
         <span className="placement-tool__status" aria-hidden="true" />
         <div>
-          <strong>Placement mode</strong>
-          <small>Development only</small>
+          <strong>{copy.mode}</strong>
+          <small>{copy.developmentOnly}</small>
         </div>
       </div>
       {point ? (
@@ -39,15 +43,15 @@ export function PlacementTool({
           </dl>
           <div className="placement-tool__actions">
             <button type="button" onClick={onCopyCoordinates}>
-              {copied === "coordinates" ? "Copied" : "Copy coordinates"}
+              {copied === "coordinates" ? copy.copied : copy.copyCoordinates}
             </button>
             <button type="button" onClick={onCopyObject}>
-              {copied === "object" ? "Copied" : "Copy location object"}
+              {copied === "object" ? copy.copied : copy.copyObject}
             </button>
           </div>
         </>
       ) : (
-        <p>Click an unmarked point on the map to capture normalized coordinates.</p>
+        <p>{copy.instruction}</p>
       )}
     </aside>
   );
