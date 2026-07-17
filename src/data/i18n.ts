@@ -198,7 +198,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 	},
 	fr: {
 		app: {
-			brandTitle: "Le Coffre des Échos",
+			brandTitle: "Le Continent de Echoes",
 			brandSubtitle: "Mon Monde, mon Univers.",
 			sitesIndexed: "sites indexés",
 			indexedLocations: "lieux indexés",
@@ -209,10 +209,10 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 		},
 		vault: {
 			eyebrow: "Mon Univers",
-			titleFirst: "Le Coffre",
-			titleSecond: "des Échos",
+			titleFirst: "Le Continent",
+			titleSecond: "de Echoes",
 			credit: "Un monde en constante évolution par Andrei Bituleanu",
-			enter: "Entrer dans le coffre",
+			enter: "Entrer dans le continent",
 			hint: "Utilisez un casque uniquement si l'audio ambiant est activé",
 		},
 		audio: {
