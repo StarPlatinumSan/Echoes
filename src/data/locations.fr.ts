@@ -20,7 +20,7 @@ const locationTranslations: Record<string, LocationTranslation> = {
 	"zone-03": {
 		name: "Europa",
 		description:
-			"Europa, la Ville intemporelle, abrite la plus importante Université de chronurgie du continent, où les mystères du temps sont étudiés, maîtrisés et remodelés. Largement considérée comme le berceau de l'Ère steampunk d'Echoes, cette supernation continue de prospérer grâce à sa maîtrise de la technologie horlogère et des sciences temporelles. Bien qu'elle ne soit que la quatrième nation la plus peuplée du continent, Europa demeure l'une des plus dynamiques et influentes : une métropole en constante évolution où convergent le passé, le présent et l'avenir.",
+			"Europa, la Ville intemporelle, abrite la plus importante Université de chronurgie du continent, où les mystères du temps sont étudiés, recherchés et maîtrisés. Largement considérée comme le berceau de l'Ère steampunk d'Echoes, cette supernation continue de prospérer grâce à sa maîtrise de la technologie chronurgique et des sciences temporelles. Bien qu'elle ne soit que la quatrième nation la plus peuplée du continent, Europa demeure l'une des plus dynamiques et influentes : une métropole en constante évolution où convergent le passé, le présent et l'avenir.",
 	},
 	"zone-04": {
 		name: "Edmonton",
