@@ -4,8 +4,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "dist/static",
-    emptyOutDir: true,
     target: "es2020",
     sourcemap: true,
   },

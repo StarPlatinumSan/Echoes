@@ -59,8 +59,6 @@ source-assets/          # local originals; ignored by Git and deployment
 scripts/
   generate_dzi.py
   create_zone_crops.py
-worker/
-  sites-worker.js
 ```
 
 ## Install the production 16K map
@@ -185,4 +183,8 @@ The audio controller is invoked only from the visitor's Enter button gesture. Vi
 
 The included fictional cartography and derived lore crops are original project assets created for this build. Portal marks and interface texture are rendered entirely in CSS. No third-party imagery is used.
 
-The small worker entrypoint in `worker/sites-worker.js` serves the Vite output on Cloudflare-compatible static hosting and falls back to `index.html` for client-side routes.
+## Deploy to Vercel
+
+Push the repository to GitHub, import it into Vercel, and deploy it with the Vite framework preset. The included `vercel.json` selects the production build command and `dist` output folder automatically.
+
+Every push to the connected production branch creates a fresh deployment.
