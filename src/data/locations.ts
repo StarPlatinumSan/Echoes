@@ -142,7 +142,7 @@ const locationDetails: LocationDetails[] = [
 			{
 				title: "Recovered entry 07/17/6426 - Shepherd protocol",
 				body:
-					"Fragments recovered from a Republic logistics ledger refer to Montreal not as a city, but as a long-horizon civic trial. The program appears to have introduced an unregistered experimental system, then watched for changes in public conduct, institutional obedience, and administrative drift. A repeated routing code points below street level. What survives of the manifests describes only one site among several: intake rooms, observation wards, periodic purges, and outbound transfers marked for the Republic's lower city. The final annotations are less legible. They speak of surface stability, compliant labour, and contentment as if all three were the same metric. Whether Montreal ever knew it was being tested is not stated.",
+					"Fragments recovered from a Republic logistics registry identify Montreal as a city designated for long-term civic trials. The Berger Program appears to have introduced a new, unregistered experimental weapon. Following its deployment, observations were conducted on public behavior, institutional obedience, and administrative drift. The logistics surrounding this experiment suggest the existence of an operational, centrally managed underground complex. What remains of the manifest mentions admission rooms, observation areas, periodic purges, and outbound transfers marked for the Republic’s Lower City. The final annotations appear to have been corrupted. Nevertheless, they refer to a docile workforce and contentment, as well as stability on the surface. Nothing indicates whether Montreal was aware that it was the subject of an experiment.",
 			},
 		],
 	},
