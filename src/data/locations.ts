@@ -140,9 +140,9 @@ const locationDetails: LocationDetails[] = [
 			"The Republic is the second-most populous supernation in the world and a nation unlike any other. Behind its colossal walls lies a sprawling dark-steampunk city-state, completely isolated from the outside world. Few people still know what truly happens within its borders; all that is known is that the Republic has descended into a very uneasy dystopia, leaving outsiders with little desire to obtain the right of entry.",
 		sections: [
 			{
-				title: "Recovered entry 07/17/6426 - Shepherd protocol",
+				title: "Recovered entry 07/17/6426 - Shepherd Protocol",
 				body:
-					"Fragments recovered from a Republic logistics registry identify Montreal as a city designated for long-term civic trials. The Berger Program appears to have introduced a new, unregistered experimental weapon. Following its deployment, observations were conducted on public behavior, institutional obedience, and administrative drift. The logistics surrounding this experiment suggest the existence of an operational, centrally managed underground complex. What remains of the manifest mentions admission rooms, observation areas, periodic purges, and outbound transfers marked for the Republic’s Lower City. The final annotations appear to have been corrupted. Nevertheless, they refer to a docile workforce and contentment, as well as stability on the surface. Nothing indicates whether Montreal was aware that it was the subject of an experiment.",
+					"Fragments recovered from a Republic logistics registry identify Montreal as a city designated for long-term civic trials. The Shepherd Program appears to have introduced a new, unregistered experimental weapon. Following its deployment, observations were conducted on public behavior, institutional obedience, and administrative drift. The logistics surrounding this experiment suggest the existence of an operational, centrally managed underground complex. What remains of the manifest mentions admission rooms, observation areas, periodic purges, and outbound transfers marked for the Republic’s Lower City. The final annotations appear to have been corrupted. Nevertheless, they refer to a docile workforce and contentment, as well as stability on the surface. Nothing indicates whether Montreal was aware that it was the subject of an experiment.",
 			},
 		],
 	},
