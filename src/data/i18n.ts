@@ -38,6 +38,11 @@ export interface InterfaceCopy {
 		archivalView: string;
 		population: string;
 		openLink: string;
+		archiveEntries: string;
+		openArchive: string;
+		closeArchive: string;
+		previousEntry: string;
+		nextEntry: string;
 		relatedTransmissions: string;
 		storiesFromPlace: string;
 	};
@@ -135,6 +140,11 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			archivalView: "Archival view of",
 			population: "Population",
 			openLink: "Open link",
+			archiveEntries: "Recovered entries",
+			openArchive: "Open recovered entries",
+			closeArchive: "Close recovered entries",
+			previousEntry: "Previous entry",
+			nextEntry: "Next entry",
 			relatedTransmissions: "Related transmissions",
 			storiesFromPlace: "Stories from this place",
 		},
@@ -234,6 +244,11 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			archivalView: "Vue d'archive de",
 			population: "Population",
 			openLink: "Ouvrir le lien",
+			archiveEntries: "Entrées récupérées",
+			openArchive: "Ouvrir les entrées récupérées",
+			closeArchive: "Fermer les entrées récupérées",
+			previousEntry: "Entrée précédente",
+			nextEntry: "Entrée suivante",
 			relatedTransmissions: "Transmissions associées",
 			storiesFromPlace: "Histoires de ce lieu",
 		},

@@ -69,6 +69,8 @@ interface LocationDetails {
 	population?: string;
 	description: string;
 	link?: LocationLink;
+	sections?: LoreSection[];
+	stories?: Story[];
 }
 
 const locationDetails: LocationDetails[] = [
@@ -136,6 +138,13 @@ const locationDetails: LocationDetails[] = [
 		population: "23 000 000",
 		description:
 			"The Republic is the second-most populous supernation in the world and a nation unlike any other. Behind its colossal walls lies a sprawling dark-steampunk city-state, completely isolated from the outside world. Few people still know what truly happens within its borders; all that is known is that the Republic has descended into a very uneasy dystopia, leaving outsiders with little desire to obtain the right of entry.",
+		sections: [
+			{
+				title: "Recovered entry 07/17/6426 - Shepherd protocol",
+				body:
+					"Fragments recovered from a Republic logistics ledger refer to Montreal not as a city, but as a long-horizon civic trial. The program appears to have introduced an unregistered experimental system, then watched for changes in public conduct, institutional obedience, and administrative drift. A repeated routing code points below street level. What survives of the manifests describes only one site among several: intake rooms, observation wards, periodic purges, and outbound transfers marked for the Republic's lower city. The final annotations are less legible. They speak of surface stability, compliant labour, and contentment as if all three were the same metric. Whether Montreal ever knew it was being tested is not stated.",
+			},
+		],
 	},
 	{
 		name: "Anchorage",
@@ -199,7 +208,7 @@ const locationDetails: LocationDetails[] = [
 		population: "4 000 000",
 		link: { label: "Coming soon" },
 		description:
-			"Located within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be told through an upcoming tale, or an interactive film ...",
+			"Located within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be told through an upcoming tale, or an interactive movie ...",
 	},
 ];
 

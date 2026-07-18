@@ -1,9 +1,10 @@
-import { locations, type Location } from "./locations";
+import { locations, type Location, type LoreSection } from "./locations";
 
 interface LocationTranslation {
 	name: string;
 	description: string;
 	linkLabel?: string;
+	sections?: LoreSection[];
 }
 
 const locationTranslations: Record<string, LocationTranslation> = {
@@ -52,6 +53,13 @@ const locationTranslations: Record<string, LocationTranslation> = {
 		name: "La République",
 		description:
 			"La République est la deuxième supernation la plus peuplée au monde et une nation sans équivalent. Derrière ses murs colossaux s'étend une vaste cité-État dark steampunk, entièrement isolée du monde extérieur. Peu de gens savent encore ce qui se passe réellement à l'intérieur de ses frontières; tout ce que l'on sait, c'est que la République a sombré dans une dystopie profondément inquiétante, laissant aux étrangers bien peu d'envie d'obtenir un droit d'entrée.",
+		sections: [
+			{
+				title: "Entrée récupérée 07/17/6426 - Protocole du berger",
+				body:
+					"Des fragments récupérés dans un registre logistique de la République désignent Montréal non comme une ville, mais comme un essai civique à long terme. Le programme semble avoir introduit un système expérimental non enregistré, puis observé les changements dans le comportement public, l'obéissance institutionnelle et la dérive administrative. Un code d'acheminement récurrent pointe sous le niveau de la rue. Ce qui subsiste des manifestes ne décrit qu'un site parmi plusieurs : salles d'admission, quartiers d'observation, purges périodiques et transferts sortants marqués pour la ville inférieure de la République. Les dernières annotations sont moins lisibles. Elles parlent de stabilité en surface, de main-d'œuvre docile et de contentement comme s'il s'agissait d'une seule et même mesure. Rien n'indique si Montréal a jamais su qu'elle faisait l'objet d'un test.",
+			},
+		],
 	},
 	"zone-10": {
 		name: "Anchorage",
@@ -110,6 +118,7 @@ export const locationsFr: Location[] = locations.map((location) => {
 		name: translation.name,
 		category: "Lieu indexé",
 		description: translation.description,
+		sections: translation.sections ?? location.sections,
 		link: location.link
 			? {
 					...location.link,

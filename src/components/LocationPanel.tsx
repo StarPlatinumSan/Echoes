@@ -20,10 +20,17 @@ export function LocationPanel({
   onClose,
 }: LocationPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
+  const archivePanelRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const archiveTriggerRef = useRef<HTMLButtonElement>(null);
+  const archiveCloseRef = useRef<HTMLButtonElement>(null);
   const image = location.image?.trim();
   const fallbackImage = location.fallbackImage?.trim();
   const [imageSource, setImageSource] = useState(image);
+  const [archiveOpen, setArchiveOpen] = useState(false);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const sections = location.sections ?? [];
+  const activeSection = sections[activeSectionIndex];
   const population = location.population?.trim();
   const description = location.description?.trim();
   const linkUrl = location.link?.url?.trim();
@@ -35,18 +42,35 @@ export function LocationPanel({
   useEffect(() => setImageSource(image), [image, location.id]);
 
   useEffect(() => {
-    closeRef.current?.focus();
+    setArchiveOpen(false);
+    setActiveSectionIndex(0);
+  }, [location.id]);
 
+  useEffect(() => closeRef.current?.focus(), [location.id]);
+
+  useEffect(() => {
+    if (archiveOpen) archiveCloseRef.current?.focus();
+  }, [archiveOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
+        if (archiveOpen) {
+          setArchiveOpen(false);
+          window.requestAnimationFrame(() => archiveTriggerRef.current?.focus());
+          return;
+        }
         onClose();
         return;
       }
 
-      if (event.key !== "Tab" || !panelRef.current) return;
+      const activePanel = archiveOpen
+        ? archivePanelRef.current
+        : panelRef.current;
+      if (event.key !== "Tab" || !activePanel) return;
       const focusable = Array.from(
-        panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE),
+        activePanel.querySelectorAll<HTMLElement>(FOCUSABLE),
       );
       if (focusable.length === 0) return;
 
@@ -63,20 +87,39 @@ export function LocationPanel({
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [onClose, location.id]);
+  }, [archiveOpen, onClose, location.id]);
 
   const titleId = `location-${location.id}-title`;
   const descriptionId = `location-${location.id}-description`;
+  const archiveTitleId = `archive-${location.id}-title`;
+
+  const openArchive = () => {
+    archiveTriggerRef.current?.blur();
+    setArchiveOpen(true);
+  };
+
+  const closeArchive = () => {
+    setArchiveOpen(false);
+    window.requestAnimationFrame(() => archiveTriggerRef.current?.focus());
+  };
 
   return (
-    <aside
-      ref={panelRef}
-      className={`location-panel ${closing ? "location-panel--closing" : ""}`}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
-      aria-describedby={description ? descriptionId : undefined}
-    >
+    <>
+      <aside
+        ref={panelRef}
+        className={[
+          "location-panel",
+          closing ? "location-panel--closing" : "",
+          archiveOpen ? "location-panel--archive-open" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        role="dialog"
+        aria-modal={!archiveOpen}
+        aria-hidden={archiveOpen || undefined}
+        aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
+      >
       <div className="location-panel__rail" aria-hidden="true">
         <span>{String(Math.round(location.x * 100)).padStart(3, "0")}</span>
         <span>{String(Math.round(location.y * 100)).padStart(3, "0")}</span>
@@ -159,17 +202,34 @@ export function LocationPanel({
               </button>
             ))}
 
-          {location.sections?.map((section, index) => (
-            <section className="lore-section" key={section.title}>
-              <p className="lore-section__index" aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <div>
-                <h3>{section.title}</h3>
-                <p>{section.body}</p>
-              </div>
-            </section>
-          ))}
+          {sections.length > 0 && (
+            <button
+              ref={archiveTriggerRef}
+              className="location-panel__archive-trigger"
+              type="button"
+              aria-controls={`archive-${location.id}`}
+              aria-expanded={archiveOpen}
+              aria-label={copy.openArchive}
+              onClick={openArchive}
+            >
+              <span
+                className="location-panel__archive-trigger-index"
+                aria-hidden="true"
+              >
+                {String(sections.length).padStart(2, "0")}
+              </span>
+              <span className="location-panel__archive-trigger-copy">
+                <small>{copy.archiveEntries}</small>
+                <strong>{copy.openArchive}</strong>
+              </span>
+              <span
+                className="location-panel__archive-trigger-arrow"
+                aria-hidden="true"
+              >
+                ←
+              </span>
+            </button>
+          )}
 
           {location.stories && location.stories.length > 0 && (
             <section className="related-stories" aria-labelledby={`stories-${location.id}`}>
@@ -187,6 +247,97 @@ export function LocationPanel({
           )}
         </div>
       </div>
-    </aside>
+      </aside>
+
+      {archiveOpen && activeSection && (
+        <aside
+          ref={archivePanelRef}
+          id={`archive-${location.id}`}
+          className={`archive-drawer ${
+            closing ? "archive-drawer--closing" : ""
+          }`}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={archiveTitleId}
+        >
+          <div className="archive-drawer__surface">
+            <header className="archive-drawer__header">
+              <div>
+                <p className="eyebrow">{copy.archiveEntries}</p>
+                <h2 id={archiveTitleId}>{location.name}</h2>
+              </div>
+              <button
+                ref={archiveCloseRef}
+                type="button"
+                onClick={closeArchive}
+                aria-label={copy.closeArchive}
+              >
+                <span>{copy.close}</span>
+                <span aria-hidden="true">×</span>
+              </button>
+            </header>
+
+            <div className="archive-drawer__body">
+              <div className="archive-entries__heading">
+                <p className="eyebrow">
+                  AR / {location.id.toUpperCase()}
+                </p>
+                <span>
+                  {String(activeSectionIndex + 1).padStart(2, "0")} /{" "}
+                  {String(sections.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div className="archive-entries__viewport" aria-live="polite">
+                <article
+                  className="lore-section"
+                  key={`${location.id}-${activeSectionIndex}`}
+                >
+                  <p className="lore-section__index" aria-hidden="true">
+                    {String(activeSectionIndex + 1).padStart(2, "0")}
+                  </p>
+                  <div>
+                    <h3>{activeSection.title}</h3>
+                    <p>{activeSection.body}</p>
+                  </div>
+                </article>
+              </div>
+
+              <nav
+                className="archive-entries__controls"
+                aria-label={copy.archiveEntries}
+              >
+                <button
+                  type="button"
+                  disabled={activeSectionIndex === 0}
+                  onClick={() =>
+                    setActiveSectionIndex((index) => Math.max(0, index - 1))
+                  }
+                >
+                  <span aria-hidden="true">←</span>
+                  {copy.previousEntry}
+                </button>
+                <button
+                  type="button"
+                  disabled={activeSectionIndex === sections.length - 1}
+                  onClick={() =>
+                    setActiveSectionIndex((index) =>
+                      Math.min(sections.length - 1, index + 1),
+                    )
+                  }
+                >
+                  {copy.nextEntry}
+                  <span aria-hidden="true">→</span>
+                </button>
+              </nav>
+            </div>
+          </div>
+          <div className="archive-drawer__rail" aria-hidden="true">
+            <span>{String(Math.round(location.y * 100)).padStart(3, "0")}</span>
+            <span>REC / {String(sections.length).padStart(2, "0")}</span>
+          </div>
+        </aside>
+      )}
+    </>
   );
 }
