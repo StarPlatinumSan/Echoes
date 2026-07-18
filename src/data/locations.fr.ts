@@ -26,7 +26,7 @@ const locationTranslations: Record<string, LocationTranslation> = {
 	"zone-04": {
 		name: "Edmonton",
 		description:
-			"Echoes of Freedom est un scénario D&D 5e en une séance, bientôt publié, qui se déroule à Edmonton, une ville cachée au sein du Continent scellé. Autrefois siège de l'un des plus importants laboratoires de recherche sur les anomalies au monde, Edmonton a rompu tout contact avec l'extérieur après avoir exploité une anomalie de classe Thaumiel capable de protéger la ville du Ravissement.",
+			"Echoes of Freedom est un scénario D&D 5e en une séance, bientôt publié, qui se déroule à Edmonton, une ville cachée au sein du Continent scellé. Autrefois siège de l'un des plus importants laboratoires de recherche sur les anomalies au monde, Edmonton a rompu tout contact avec l'extérieur après avoir exploité une anomalie de classe Thaumiel capable de protéger la ville de la catastrophe.",
 		linkLabel: "Bientôt",
 	},
 	"zone-05": {
