@@ -28,6 +28,7 @@ export function LocationPanel({
   const fallbackImage = location.fallbackImage?.trim();
   const [imageSource, setImageSource] = useState(image);
   const [archiveOpen, setArchiveOpen] = useState(false);
+  const [archiveClosing, setArchiveClosing] = useState(false);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const sections = location.sections ?? [];
   const activeSection = sections[activeSectionIndex];
@@ -43,22 +44,22 @@ export function LocationPanel({
 
   useEffect(() => {
     setArchiveOpen(false);
+    setArchiveClosing(false);
     setActiveSectionIndex(0);
   }, [location.id]);
 
   useEffect(() => closeRef.current?.focus(), [location.id]);
 
   useEffect(() => {
-    if (archiveOpen) archiveCloseRef.current?.focus();
-  }, [archiveOpen]);
+    if (archiveOpen && !archiveClosing) archiveCloseRef.current?.focus();
+  }, [archiveClosing, archiveOpen]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         if (archiveOpen) {
-          setArchiveOpen(false);
-          window.requestAnimationFrame(() => archiveTriggerRef.current?.focus());
+          setArchiveClosing(true);
           return;
         }
         onClose();
@@ -95,11 +96,17 @@ export function LocationPanel({
 
   const openArchive = () => {
     archiveTriggerRef.current?.blur();
+    setArchiveClosing(false);
     setArchiveOpen(true);
   };
 
   const closeArchive = () => {
+    setArchiveClosing(true);
+  };
+
+  const finishArchiveClose = () => {
     setArchiveOpen(false);
+    setArchiveClosing(false);
     window.requestAnimationFrame(() => archiveTriggerRef.current?.focus());
   };
 
@@ -208,7 +215,7 @@ export function LocationPanel({
               className="location-panel__archive-trigger"
               type="button"
               aria-controls={`archive-${location.id}`}
-              aria-expanded={archiveOpen}
+              aria-expanded={archiveOpen && !archiveClosing}
               aria-label={copy.openArchive}
               onClick={openArchive}
             >
@@ -254,11 +261,16 @@ export function LocationPanel({
           ref={archivePanelRef}
           id={`archive-${location.id}`}
           className={`archive-drawer ${
-            closing ? "archive-drawer--closing" : ""
+            closing || archiveClosing ? "archive-drawer--closing" : ""
           }`}
           role="dialog"
           aria-modal="true"
           aria-labelledby={archiveTitleId}
+          onAnimationEnd={(event) => {
+            if (archiveClosing && event.target === event.currentTarget) {
+              finishArchiveClose();
+            }
+          }}
         >
           <div className="archive-drawer__surface">
             <header className="archive-drawer__header">
