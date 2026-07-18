@@ -788,6 +788,7 @@
     width: 32px;
     min-width: 32px;
     padding: 0;
+    animation: reveal-ui 1s 0.55s both;
   }
 
   .archive-header {
