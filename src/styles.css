@@ -819,8 +819,17 @@
     border: 1px solid rgba(207, 171, 118, 0.6);
     place-items: center;
     color: var(--brass-bright);
-    font-family: Georgia, serif;
-    font-size: 0.7rem;
+  }
+
+  .archive-header__monogram svg {
+    width: 19px;
+    height: 19px;
+    overflow: visible;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 5px rgba(207, 171, 118, 0.2));
   }
 
   .archive-header__brand div {

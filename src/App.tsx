@@ -170,7 +170,10 @@ export default function App() {
 				<header className="archive-header">
 					<div className="archive-header__brand">
 						<span className="archive-header__monogram" aria-hidden="true">
-							VE
+							<svg viewBox="0 0 24 24" fill="none">
+								<path d="M3 6 9 3l6 3 6-3v15l-6 3-6-3-6 3V6Z" />
+								<path d="M9 3v15M15 6v15" />
+							</svg>
 						</span>
 						<div>
 							<strong>{copy.app.brandTitle}</strong>
