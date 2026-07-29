@@ -109,7 +109,7 @@ const locationDetails: LocationDetails[] = [
 		image: "/images/locations/Copperbraum.jpg",
 		population: "3 000 000",
 		description:
-			"the city of dwarves and gnomes, is also known as the City of Copper. Built across rugged hills and sustained by a thriving mining economy, its streets glow with molten metal and roaring furnaces. Despite the surrounding climate, the constant use of lava and industrial forges makes Copperbraum one of the hottest cities on the continent with an average temperature of 44 degrees during the day and 35 at night.",
+			"The city of dwarves and gnomes, is also known as the City of Copper. Built across rugged hills and sustained by a thriving mining economy, its streets glow with molten metal and roaring furnaces. Despite the surrounding climate, the constant use of lava and industrial forges makes Copperbraum one of the hottest cities on the continent with an average temperature of 44 degrees during the day and 35 at night.",
 	},
 	{
 		name: "Fjellgard",
