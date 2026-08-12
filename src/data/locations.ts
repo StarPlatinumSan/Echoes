@@ -130,7 +130,7 @@ const locationDetails: LocationDetails[] = [
 		image: "/images/locations/Ironhaven.jpg",
 		population: "6 000 000",
 		description:
-			"The City of Iron lives up to its name. A seemingly flawless supernation, Ironhaven stands as one of the few civilizations to have achieved something resembling a true utopia, or at least, that is the image it presents to the outside world.",
+			"The City of Iron lives up to its name. A seemingly flawless supernation, Ironhaven stands as one of the few civilizations to have achieved something resembling a true utopia, or at least, that is the image it presents to the outside world. Moreover, The Pantheon sieges its location there within the sub-city of Athena, this place is believed to have made a simulation capable of teaching students how to build a prosperous civilization.",
 	},
 	{
 		name: "The Republic",
@@ -159,7 +159,7 @@ const locationDetails: LocationDetails[] = [
 		image: "/images/locations/Ashfenbourg.jpg",
 		population: "5 000 000",
 		description:
-			"Situated closer to the continental capital than any other city, Ashfenbourg is a prosperous Elven nation renowned for its explorers, diplomats, and mastery of negotiation. Many of the continent's most respected judges, lawmakers, and legal scholars emerge from its prestigious institutions. Moreover, The Pantheon sieges its location there within the sub-city of Athena. Yet beneath its elegance and affluence, the cost of living continues to soar, gradually transforming Ashfenbourg into a city accessible only to its wealthiest citizens.",
+			"Situated closer to the continental capital than any other city, Ashfenbourg is a prosperous Elven nation renowned for its explorers, diplomats, and mastery of negotiation. Many of the continent's most respected judges, lawmakers, and legal scholars emerge from its prestigious institutions. Yet beneath its elegance and affluence, the cost of living continues to soar, gradually transforming Ashfenbourg into a city accessible only to its wealthiest citizens.",
 	},
 	{
 		name: "Kyoran",

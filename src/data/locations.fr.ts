@@ -47,7 +47,7 @@ const locationTranslations: Record<string, LocationTranslation> = {
 	"zone-08": {
 		name: "Ironhaven",
 		description:
-			"La Ville de fer porte bien son nom. Supernation en apparence irréprochable, Ironhaven est l'une des rares civilisations à avoir atteint quelque chose qui ressemble à une véritable utopie, ou du moins, telle est l'image qu'elle présente au monde extérieur.",
+			"La Ville de fer porte bien son nom. Supernation en apparence irréprochable, Ironhaven est l'une des rares civilisations à avoir atteint quelque chose qui ressemble à une véritable utopie, ou du moins, telle est l'image qu'elle présente au monde extérieur. De plus, le Panthéon y a établi son siège dans la sous-ville d'Athéna. Cet endroit semble contenir une simulation capable d'apprendre aux étudiants comment développer une civilisation prospère.",
 	},
 	"zone-09": {
 		name: "La République",
@@ -70,7 +70,7 @@ const locationTranslations: Record<string, LocationTranslation> = {
 	"zone-11": {
 		name: "Ashfenbourg",
 		description:
-			"Située plus près de la capitale continentale que toute autre ville, Ashfenbourg est une nation elfique prospère, réputée pour ses explorateurs, ses diplomates et sa maîtrise de la négociation. Nombre des juges, législateurs et juristes les plus respectés du continent sont issus de ses prestigieuses institutions. De plus, le Panthéon y a établi son siège dans la sous-ville d'Athéna. Pourtant, sous son élégance et son opulence, le coût de la vie ne cesse d'augmenter, transformant peu à peu Ashfenbourg en une ville accessible uniquement à ses citoyens les plus fortunés.",
+			"Située plus près de la capitale continentale que toute autre ville, Ashfenbourg est une nation elfique prospère, réputée pour ses explorateurs, ses diplomates et sa maîtrise de la négociation. Nombre des juges, législateurs et juristes les plus respectés du continent sont issus de ses prestigieuses institutions. Pourtant, sous son élégance et son opulence, le coût de la vie ne cesse d'augmenter, transformant peu à peu Ashfenbourg en une ville accessible uniquement à ses citoyens les plus fortunés.",
 	},
 	"zone-12": {
 		name: "Kyoran",
