@@ -6,6 +6,7 @@ export interface LoreSection {
 export interface LocationLink {
 	url?: string;
 	label?: string;
+	note?: string;
 }
 
 export interface Story {
@@ -131,6 +132,11 @@ const locationDetails: LocationDetails[] = [
 		population: "6 000 000",
 		description:
 			"The City of Iron lives up to its name. A seemingly flawless supernation, Ironhaven stands as one of the few civilizations to have achieved something resembling a true utopia, or at least, that is the image it presents to the outside world. Moreover, The Pantheon sieges its location there within the sub-city of Athena, this place is believed to have made a simulation capable of teaching students how to build a prosperous civilization.",
+		link: {
+			url: "https://artificial-selection.vercel.app",
+			label: "Open Artificial Selection",
+			note: "Work in progress - Beta version only.",
+		},
 	},
 	{
 		name: "The Republic",

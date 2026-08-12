@@ -36,6 +36,7 @@ export function LocationPanel({
   const description = location.description?.trim();
   const linkUrl = location.link?.url?.trim();
   const linkLabel = location.link?.label?.trim() || copy.openLink;
+  const linkNote = location.link?.note?.trim();
   const hasLongTitleWord = location.name
     .split(/\s+/)
     .some((word) => word.length >= 10);
@@ -93,6 +94,7 @@ export function LocationPanel({
   const titleId = `location-${location.id}-title`;
   const descriptionId = `location-${location.id}-description`;
   const archiveTitleId = `archive-${location.id}-title`;
+  const linkNoteId = `location-${location.id}-link-note`;
 
   const openArchive = () => {
     archiveTriggerRef.current?.blur();
@@ -190,10 +192,13 @@ export function LocationPanel({
           {location.link &&
             (linkUrl ? (
               <a
-                className="location-panel__external-link"
+                className={`location-panel__external-link ${
+                  linkNote ? "location-panel__external-link--with-note" : ""
+                }`}
                 href={linkUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-describedby={linkNote ? linkNoteId : undefined}
               >
                 {linkLabel}
                 <span aria-hidden="true">↗</span>
@@ -208,6 +213,13 @@ export function LocationPanel({
                 <span aria-hidden="true">—</span>
               </button>
             ))}
+
+          {linkNote && (
+            <p id={linkNoteId} className="location-panel__external-note">
+              <span aria-hidden="true" />
+              {linkNote}
+            </p>
+          )}
 
           {sections.length > 0 && (
             <button

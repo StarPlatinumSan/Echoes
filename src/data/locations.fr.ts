@@ -4,6 +4,7 @@ interface LocationTranslation {
 	name: string;
 	description: string;
 	linkLabel?: string;
+	linkNote?: string;
 	sections?: LoreSection[];
 }
 
@@ -48,6 +49,8 @@ const locationTranslations: Record<string, LocationTranslation> = {
 		name: "Ironhaven",
 		description:
 			"La Ville de fer porte bien son nom. Supernation en apparence irréprochable, Ironhaven est l'une des rares civilisations à avoir atteint quelque chose qui ressemble à une véritable utopie, ou du moins, telle est l'image qu'elle présente au monde extérieur. De plus, le Panthéon y a établi son siège dans la sous-ville d'Athéna. Cet endroit semble contenir une simulation capable d'apprendre aux étudiants comment développer une civilisation prospère.",
+		linkLabel: "Ouvrir Artificial Selection",
+		linkNote: "Projet en cours - Version Bêta est disponible.",
 	},
 	"zone-09": {
 		name: "La République",
@@ -123,6 +126,7 @@ export const locationsFr: Location[] = locations.map((location) => {
 			? {
 					...location.link,
 					label: translation.linkLabel ?? location.link.label,
+					note: translation.linkNote ?? location.link.note,
 				}
 			: undefined,
 	};

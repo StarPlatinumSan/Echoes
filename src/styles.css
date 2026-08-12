@@ -1477,6 +1477,32 @@
     cursor: not-allowed;
   }
 
+  .location-panel__external-link.location-panel__external-link--with-note {
+    margin-bottom: 10px;
+  }
+
+  .location-panel__external-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 34px;
+    color: rgba(236, 229, 212, 0.58);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.07em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .location-panel__external-note span {
+    width: 5px;
+    height: 5px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--brass-bright);
+    box-shadow: 0 0 8px rgba(207, 171, 118, 0.45);
+  }
+
   .location-panel h2 + .location-panel__external-link,
   .location-panel__population + .location-panel__external-link {
     margin-top: 24px;
