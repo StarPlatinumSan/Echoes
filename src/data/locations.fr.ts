@@ -111,6 +111,12 @@ const locationTranslations: Record<string, LocationTranslation> = {
 			"Située au sein du Continent scellé, cette ville isolée a transmis une série de messages profondément troublants il y a plusieurs mois, avant que toute communication ne cesse brusquement. Pourtant, rien n'indique que sa population ait péri. La ville pourrait encore être habitée, dissimulant silencieusement ce qui s'est déroulé derrière ses murs. Peut-être son histoire sera-t-elle bientôt racontée dans un récit à venir, ou dans un film interactif...",
 		linkLabel: "Bientôt",
 	},
+	"zone-19": {
+		name: "The Elevator",
+		description:
+			"Près d'une ville fonctionnelle se dresse une immense tour de confinement abritant des personnes contaminées par l'Anomite. Ses habitants savent qu'ils sont enfermés et qu'une société normale continue d'exister au-delà de ses murs. Officiellement, la tour surveille leur évolution et détermine si leur réintégration pourra un jour être envisagée. Les déplacements entre ses castes sont strictement contrôlés par un ascenseur central.",
+		linkLabel: "More in 2027",
+	},
 };
 
 export const locationsFr: Location[] = locations.map((location) => {

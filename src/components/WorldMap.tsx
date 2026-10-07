@@ -450,11 +450,7 @@ export function WorldMap({
       className={`world-map ${interactive ? "world-map--interactive" : ""} ${measurementActive ? "world-map--measuring" : ""}`}
       aria-label={copy.map.worldMap}
     >
-      <div className="vault-backdrop" aria-hidden="true">
-        <span className="vault-backdrop__door" />
-        <span className="vault-backdrop__hub" />
-        <span className="vault-backdrop__seal" />
-      </div>
+      <div className="vault-backdrop" aria-hidden="true" />
       <div
         ref={viewerElementRef}
         className="world-map__viewer"

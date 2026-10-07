@@ -62,6 +62,7 @@ const zoneDrafts: ZoneDraft[] = [
 	{ id: "zone-16", name: "Zone 16", x: 0.325909, y: 0.687988 },
 	{ id: "zone-17", name: "Zone 17", x: 0.4068, y: 0.723869 },
 	{ id: "zone-18", name: "Zone 18", x: 0.124267, y: 0.929797 },
+	{ id: "zone-19", name: "Zone 19", x: 0.555237, y: 0.299805 },
 ];
 
 interface LocationDetails {
@@ -215,6 +216,12 @@ const locationDetails: LocationDetails[] = [
 		link: { label: "Coming soon" },
 		description:
 			"Located within the Sealed Continent, this isolated city transmitted a series of deeply unsettling messages several months ago, until all communication abruptly ceased. Yet nothing indicates that its population has perished. The city may still be inhabited, silently concealing whatever unfolded within its walls. Perhaps its story will soon be told through an upcoming tale, or an interactive movie ...",
+	},
+	{
+		name: "The Elevator",
+		description:
+			"Near a functioning city-state of The Republic stands an immense containment tower housing people contaminated by Anomite. Its residents know they are confined and that ordinary society continues beyond its walls. Officially, the tower monitors their condition and determines whether reintegration may one day be possible. Movement between its castes is tightly controlled through a central elevator.",
+		link: { label: "More in 2027" },
 	},
 ];
 

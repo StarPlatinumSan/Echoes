@@ -201,13 +201,6 @@ export default function App() {
 				/>
 			)}
 
-			{entered && (
-				<div className="map-instructions" aria-hidden="true">
-					<span>{copy.app.dragToTraverse}</span>
-					<span>{copy.app.scrollToExamine}</span>
-				</div>
-			)}
-
 			{entranceVisible && (
 				<VaultEntrance
 					onEnter={enterVault}

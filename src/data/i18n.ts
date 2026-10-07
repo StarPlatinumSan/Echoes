@@ -6,8 +6,6 @@ export interface InterfaceCopy {
 		brandSubtitle: string;
 		sitesIndexed: string;
 		indexedLocations: string;
-		dragToTraverse: string;
-		scrollToExamine: string;
 		closeLocationDetails: string;
 		switchLanguage: string;
 	};
@@ -108,8 +106,6 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			brandSubtitle: "My World, my Universe.",
 			sitesIndexed: "sites indexed",
 			indexedLocations: "indexed locations",
-			dragToTraverse: "Drag to traverse",
-			scrollToExamine: "Scroll to examine",
 			closeLocationDetails: "Close location details",
 			switchLanguage: "Passer au français",
 		},
@@ -212,8 +208,6 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			brandSubtitle: "Mon Monde, mon Univers.",
 			sitesIndexed: "sites indexés",
 			indexedLocations: "lieux indexés",
-			dragToTraverse: "Glisser pour parcourir",
-			scrollToExamine: "Défiler pour examiner",
 			closeLocationDetails: "Fermer les détails du lieu",
 			switchLanguage: "Switch to English",
 		},
