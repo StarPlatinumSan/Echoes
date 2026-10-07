@@ -103,7 +103,7 @@ const locationTranslations: Record<string, LocationTranslation> = {
 	"zone-17": {
 		name: "Montpellier",
 		description:
-			"Cette petite ville côtière est réputée pour la douceur de son rythme de vie, où les matinées commencent par un café sur la Place de la Comédie et où personne ne semble jamais pressé. Au-delà de ses rues tranquilles s'étendent certaines des mers bleu cristal les plus radieuses d'Echoes. Ici, le soleil brille presque toute l'année et la simplicité n'est pas une limite, mais une manière de vivre.",
+			"Cette petite ville côtière est réputée pour la douceur de son rythme de vie, où les matinées commencent par un café sur la Place de la Comédie et où personne ne semble jamais pressé. Au-delà de ses rues tranquilles s'étendent certaines des mers bleu cristal les plus radieuses d'Echoes. Ici, le soleil brille presque toute l'année et la vie est vécu à un rythme plus simple.",
 	},
 	"zone-18": {
 		name: "Montréal",

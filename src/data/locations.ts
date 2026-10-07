@@ -207,7 +207,7 @@ const locationDetails: LocationDetails[] = [
 		image: "/images/locations/Montpellier.png",
 		population: "300 000",
 		description:
-			"This small coastal city is renowned for its gentle pace of life, where mornings begin with coffee at the local coffee shop and no one ever seems to be in a hurry. Beyond its quiet streets lie some of the most radiant crystal-blue seas of Echoes. Here, the sun shines almost all year and simplicity is not a limitation, but a way of life.",
+			"This small coastal city is renowned for its gentle pace of life, where mornings begin with coffee at the local coffee shop and no one ever seems to be in a hurry. Beyond its quiet streets lie some of the most radiant crystal-blue seas of Echoes. Here, the sun shines almost all year and life is lived at a calmer pace.",
 	},
 	{
 		name: "Montreal",
