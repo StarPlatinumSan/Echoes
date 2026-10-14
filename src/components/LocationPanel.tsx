@@ -137,9 +137,6 @@ export function LocationPanel({ location, closing, copy, onClose }: LocationPane
 									}
 								}}
 							/>
-							<span className="location-panel__image-index" aria-hidden="true">
-								VE / {location.id.slice(0, 2).toUpperCase()}
-							</span>
 						</div>
 					)}
 
