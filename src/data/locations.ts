@@ -184,6 +184,7 @@ const locationDetails: LocationDetails[] = [
 	},
 	{
 		name: "Anomite",
+		image: "/images/locations/zones/zone-14.webp",
 		population: "0",
 		description:
 			"This region contains a high concentration of Anomite, a mysterious mineral capable of producing immense energy and piercing the magical veil of reality. Exposure can grant humans extraordinary abilities, but often at the cost of their psychological stability. Some researchers believe Anomite may also be connected to the emergence of Anomalies, though whether the mineral creates them, attracts them, or is produced by them remains unknown.",

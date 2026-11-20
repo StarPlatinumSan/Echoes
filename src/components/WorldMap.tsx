@@ -37,6 +37,8 @@ interface ScreenPoint {
 const tileSource = import.meta.env.VITE_MAP_TILE_SOURCE || "/map/world-map.dzi";
 const minZoom = Number(import.meta.env.VITE_MAP_MIN_ZOOM || 0.9);
 const maxZoom = Number(import.meta.env.VITE_MAP_MAX_ZOOM || 6);
+const maskRestorationBounds = { x: 1991, y: 10974, width: 295, height: 415 };
+const floatingMaskBounds = { x: 1999, y: 10982, width: 279, height: 399 };
 const placementEnabled =
   import.meta.env.DEV && import.meta.env.VITE_ENABLE_PLACEMENT_MODE === "true";
 
@@ -86,6 +88,43 @@ export function WorldMap({
       if (!item) return;
       const contentSize = item.getContentSize();
       const nextPortalOverlays: PortalOverlay[] = [];
+
+      const restoration = document.createElement("img");
+      restoration.className = "map-mask-restoration";
+      restoration.src = "/images/map-effects/montreal-mask-restoration.png";
+      restoration.alt = "";
+      restoration.draggable = false;
+      restoration.setAttribute("aria-hidden", "true");
+      viewer.addOverlay({
+        element: restoration,
+        location: item.imageToViewportRectangle(
+          maskRestorationBounds.x,
+          maskRestorationBounds.y,
+          maskRestorationBounds.width,
+          maskRestorationBounds.height,
+        ),
+        checkResize: false,
+      });
+
+      const floatingMask = document.createElement("div");
+      floatingMask.className = "map-mask-effect";
+      floatingMask.setAttribute("aria-hidden", "true");
+      const floatingMaskImage = document.createElement("img");
+      floatingMaskImage.className = "map-mask-effect__image";
+      floatingMaskImage.src = "/images/map-effects/montreal-mask-float.png";
+      floatingMaskImage.alt = "";
+      floatingMaskImage.draggable = false;
+      floatingMask.append(floatingMaskImage);
+      viewer.addOverlay({
+        element: floatingMask,
+        location: item.imageToViewportRectangle(
+          floatingMaskBounds.x,
+          floatingMaskBounds.y,
+          floatingMaskBounds.width,
+          floatingMaskBounds.height,
+        ),
+        checkResize: false,
+      });
 
       locations.forEach((location) => {
         const container = document.createElement("div");

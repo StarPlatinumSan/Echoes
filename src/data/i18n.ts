@@ -15,7 +15,6 @@ export interface InterfaceCopy {
 		titleSecond: string;
 		credit: string;
 		enter: string;
-		hint: string;
 	};
 	audio: {
 		controls: string;
@@ -103,7 +102,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 	en: {
 		app: {
 			brandTitle: "The Vault of Echoes",
-			brandSubtitle: "My World, my Universe.",
+			brandSubtitle: "My Universe.",
 			sitesIndexed: "sites indexed",
 			indexedLocations: "indexed locations",
 			closeLocationDetails: "Close location details",
@@ -111,11 +110,10 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 		},
 		vault: {
 			eyebrow: "My Universe",
-			titleFirst: "The Vault",
-			titleSecond: "of Echoes",
+			titleFirst: "The Vault of",
+			titleSecond: "Echoes",
 			credit: "A continuously evolving world by Andrei Bituleanu",
 			enter: "Enter the vault",
-			hint: "Use headphones only if ambient audio is enabled",
 		},
 		audio: {
 			controls: "Ambient music controls",
@@ -146,13 +144,11 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 		},
 		map: {
 			worldMap: "World map",
-			interactiveMap:
-				"Interactive map. Drag to pan, scroll or use plus and minus to zoom, arrow keys to move, and Home to reset.",
+			interactiveMap: "Interactive map. Drag to pan, scroll or use plus and minus to zoom, arrow keys to move, and Home to reset.",
 			openingIndex: "Opening the cartographic index",
 			archiveInterruption: "Archive interruption",
 			mapUnavailable: "Map unavailable",
-			mapOpenError:
-				"The map archive could not be opened. Check the DZI descriptor and tile folder.",
+			mapOpenError: "The map archive could not be opened. Check the DZI descriptor and tile folder.",
 			tileWarning: "One map tile was unavailable. Navigation remains active.",
 			retry: "Retry map",
 		},
@@ -175,8 +171,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			calculated: "Route calculated",
 			directDistance: "Direct distance",
 			note: "Estimates assume uninterrupted travel at the listed speeds.",
-			prompt:
-				"Click any two points or two location markers to measure their distance.",
+			prompt: "Click any two points or two location markers to measure their distance.",
 			clear: "Clear route",
 			walk: "Walk",
 			horse: "Horse",
@@ -194,8 +189,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			copied: "Copied",
 			copyCoordinates: "Copy coordinates",
 			copyObject: "Copy location object",
-			instruction:
-				"Click an unmarked point on the map to capture normalized coordinates.",
+			instruction: "Click an unmarked point on the map to capture normalized coordinates.",
 			newLocation: "New Location",
 			uncatalogued: "Uncatalogued",
 			populationPending: "Population pending",
@@ -205,7 +199,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 	fr: {
 		app: {
 			brandTitle: "Le Continent de Echoes",
-			brandSubtitle: "Mon Monde, mon Univers.",
+			brandSubtitle: "Mon Univers.",
 			sitesIndexed: "sites indexés",
 			indexedLocations: "lieux indexés",
 			closeLocationDetails: "Fermer les détails du lieu",
@@ -213,11 +207,10 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 		},
 		vault: {
 			eyebrow: "Mon Univers",
-			titleFirst: "Le Continent",
-			titleSecond: "de Echoes",
+			titleFirst: "Le Continent de",
+			titleSecond: "Echoes",
 			credit: "Un monde en constante évolution par Andrei Bituleanu",
 			enter: "Entrer dans le continent",
-			hint: "Utilisez un casque uniquement si l'audio ambiant est activé",
 		},
 		audio: {
 			controls: "Contrôles de la musique ambiante",
@@ -248,15 +241,12 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 		},
 		map: {
 			worldMap: "Carte du monde",
-			interactiveMap:
-				"Carte interactive. Faites glisser pour vous déplacer, défilez ou utilisez plus et moins pour zoomer, les flèches pour bouger et Origine pour réinitialiser.",
+			interactiveMap: "Carte interactive. Faites glisser pour vous déplacer, défilez ou utilisez plus et moins pour zoomer, les flèches pour bouger et Origine pour réinitialiser.",
 			openingIndex: "Ouverture de l'index cartographique",
 			archiveInterruption: "Interruption des archives",
 			mapUnavailable: "Carte indisponible",
-			mapOpenError:
-				"Les archives cartographiques n'ont pas pu être ouvertes. Vérifiez le descripteur DZI et le dossier des tuiles.",
-			tileWarning:
-				"Une tuile de la carte est indisponible. La navigation demeure active.",
+			mapOpenError: "Les archives cartographiques n'ont pas pu être ouvertes. Vérifiez le descripteur DZI et le dossier des tuiles.",
+			tileWarning: "Une tuile de la carte est indisponible. La navigation demeure active.",
 			retry: "Réessayer",
 		},
 		mapControls: {
@@ -278,8 +268,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			calculated: "Trajet calculé",
 			directDistance: "Distance directe",
 			note: "Les estimations supposent un déplacement ininterrompu aux vitesses indiquées.",
-			prompt:
-				"Cliquez sur deux points ou deux marqueurs de lieu pour mesurer leur distance.",
+			prompt: "Cliquez sur deux points ou deux marqueurs de lieu pour mesurer leur distance.",
 			clear: "Effacer le trajet",
 			walk: "Marche",
 			horse: "Cheval",
@@ -297,8 +286,7 @@ export const interfaceCopy: Record<Language, InterfaceCopy> = {
 			copied: "Copié",
 			copyCoordinates: "Copier les coordonnées",
 			copyObject: "Copier l'objet du lieu",
-			instruction:
-				"Cliquez sur un point non marqué de la carte pour relever ses coordonnées normalisées.",
+			instruction: "Cliquez sur un point non marqué de la carte pour relever ses coordonnées normalisées.",
 			newLocation: "Nouveau lieu",
 			uncatalogued: "Non catalogué",
 			populationPending: "Population à déterminer",
